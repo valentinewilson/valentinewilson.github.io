@@ -1,6 +1,6 @@
 # valentinewilson.github.io
 
-Personal portfolio + blog, built with [Astro](https://astro.build), Tailwind CSS, and MDX.
+Personal portfolio, built with [Astro](https://astro.build) and Tailwind CSS.
 
 ## Project structure
 
@@ -9,14 +9,10 @@ Personal portfolio + blog, built with [Astro](https://astro.build), Tailwind CSS
 ├── src/
 │   ├── components/       # Nav, Footer
 │   ├── layouts/          # Layout.astro (shared page shell)
-│   ├── content/blog/     # blog posts (.md / .mdx)
-│   ├── content.config.ts # blog collection schema
 │   └── pages/
-│       ├── index.astro   # home
-│       ├── projects.astro
-│       └── blog/
-│           ├── index.astro
-│           └── [...slug].astro
+│       ├── index.astro      # home
+│       ├── experience.astro
+│       └── projects.astro
 └── astro.config.mjs
 ```
 
@@ -28,23 +24,6 @@ Personal portfolio + blog, built with [Astro](https://astro.build), Tailwind CSS
 | `npm run dev`          | Start local dev server at `localhost:4321`    |
 | `npm run build`        | Build production site to `./dist/`            |
 | `npm run preview`       | Preview the production build locally           |
-
-## Writing a new blog post
-
-Add a new `.md` or `.mdx` file to `src/content/blog/`:
-
-```md
----
-title: "Post Title"
-description: "One-sentence summary."
-date: 2026-01-01
-tags: ["tag-one"]
----
-
-Post content goes here.
-```
-
-Set `draft: true` in the frontmatter to keep a post out of the listing and homepage until it's ready.
 
 ## Deployment
 

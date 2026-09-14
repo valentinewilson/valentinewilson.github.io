@@ -1,14 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getCollection } from "astro:content";
-
-const posts = (await getCollection("blog", ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
 ---
 
 <Layout title="Home">
-  <section class="mb-16">
+  <section>
     <h1 class="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
       Hi, I'm Valentine.
     </h1>
@@ -37,26 +32,4 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
       </a>
     </div>
   </section>
-
-  {
-    posts.length > 0 && (
-      <section>
-        <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-neutral-100">
-          Recent posts
-        </h2>
-        <ul class="space-y-4">
-          {posts.map((post) => (
-            <li>
-              <a href={`/blog/${post.id}`} class="group block">
-                <span class="font-medium text-neutral-900 group-hover:underline dark:text-neutral-100">
-                  {post.data.title}
-                </span>
-                <p class="text-sm text-neutral-500 dark:text-neutral-400">{post.data.description}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
 </Layout>
