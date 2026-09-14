@@ -1,0 +1,31 @@
+---
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Valentine Wilson — portfolio and writing." } = Astro.props;
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title} · Valentine Wilson</title>
+  </head>
+  <body class="min-h-screen bg-white text-neutral-800 antialiased dark:bg-neutral-950 dark:text-neutral-200">
+    <Nav />
+    <main class="mx-auto max-w-3xl px-4 py-12">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
