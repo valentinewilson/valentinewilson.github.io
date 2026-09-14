@@ -67,29 +67,50 @@ const roles = [
       },
     ],
   },
-];
-
-const earlierRoles = [
   {
     company: "Hudson Institute",
     title: "Technology Policy Research Intern",
     dates: "May 2019 – Jul 2019",
-    description:
-      "Supported federal trade strategy research on China, semiconductors, and emerging AI capabilities by analyzing rare earth and chip supply chains, technical patents, and U.S.-China trade developments.",
+    subtitle: "Washington, D.C.",
+    summary:
+      "Supported federal trade strategy research on China, semiconductors, and emerging AI capabilities — analyzing how supply chains and technology policy shape the global balance of power in frontier technology.",
+    sections: [
+      {
+        heading: "Research Focus",
+        points: [
+          "Analyzed rare earth and chip supply chains, technical patents, and U.S.-China trade developments to support federal trade strategy research.",
+          "Researched how international supply chains, rare earth metals, and semiconductor production govern access to frontier compute.",
+          "Identified that control over compute functionally means control over whose values shape frontier AI models — an early throughline connecting geopolitics to AI governance.",
+        ],
+      },
+    ],
   },
+  {
+    company: "Draper Laboratory",
+    title: "Machine Learning Intern",
+    dates: "May 2018 – Aug 2018",
+    subtitle: "Cambridge, MA",
+    summary:
+      "Led security testing of internal AI systems for a government research project, using adversarial methods to identify and mitigate model vulnerabilities.",
+    sections: [
+      {
+        heading: "Adversarial ML & Model Security",
+        points: [
+          "Developed adversarial ML algorithms to test the robustness of internal AI systems, surfacing concrete vulnerabilities to adversarial attacks and data poisoning.",
+          "Demonstrated that models are vulnerable to adversarial attacks, poisoning, and misalignment — establishing that technical robustness is a necessary, not optional, component of AI safety.",
+        ],
+      },
+    ],
+  },
+];
+
+const earlierRoles = [
   {
     company: "Emory University, Systems Neural Engineering Lab",
     title: "Student Researcher",
     dates: "Aug 2017 – May 2019",
     description:
       "Led development of an ML system linking brain signals to physical movements, and automated behavioral analysis for neuroscience research.",
-  },
-  {
-    company: "Draper Laboratory",
-    title: "Machine Learning Intern",
-    dates: "May 2018 – Aug 2018",
-    description:
-      "Led security testing of internal AI systems using adversarial methods to identify and mitigate risks.",
   },
 ];
 ---
@@ -131,9 +152,6 @@ const earlierRoles = [
 
   <section class="mt-16 border-t border-neutral-200 pt-10 dark:border-neutral-800">
     <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Earlier / Research</h2>
-    <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-      The technical foundation — ML research and policy work before product management.
-    </p>
     <ul class="mt-6 space-y-6">
       {
         earlierRoles.map((role) => (
