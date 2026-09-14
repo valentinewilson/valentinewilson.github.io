@@ -1,6 +1,11 @@
 <footer class="mx-auto max-w-3xl px-4 py-10 text-sm text-neutral-500 dark:text-neutral-400">
   <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-    <a href="mailto:valentineawilson@gmail.com" class="underline hover:text-neutral-900 dark:hover:text-neutral-100">
+    <a
+      href="#"
+      class="email-link underline hover:text-neutral-900 dark:hover:text-neutral-100"
+      data-user="valentineawilson"
+      data-domain="gmail.com"
+    >
       Email
     </a>
     <a href="https://www.linkedin.com/in/valentine-wilson" class="underline hover:text-neutral-900 dark:hover:text-neutral-100">
@@ -12,3 +17,15 @@
   </div>
   <p class="mt-4">&copy; {new Date().getFullYear()} Valentine Wilson.</p>
 </footer>
+
+<script>
+  // Assembles the mailto link at runtime so the raw address never appears as a
+  // contiguous string in the static HTML — keeps it off simple scraper regexes.
+  document.querySelectorAll<HTMLAnchorElement>(".email-link").forEach((el) => {
+    const user = el.dataset.user;
+    const domain = el.dataset.domain;
+    if (user && domain) {
+      el.href = `mailto:${user}@${domain}`;
+    }
+  });
+</script>

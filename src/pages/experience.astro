@@ -1,15 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ExperienceEntry from "../components/ExperienceEntry.astro";
 
-const roles = [
+const relevantRoles = [
   {
     company: "Co-Star Astrology",
     title: "Product Manager",
     dates: "Nov 2021 – Jan 2026",
     subtitle: "Associate Product Manager (Nov 2021 – Apr 2022) → Product Manager (Apr 2022 – Jan 2026)",
     teaser:
-      "4+ years driving growth, retention, and monetization for a consumer social app — including QA on predictive models to protect user wellbeing.",
-    open: true,
+      "4+ years driving growth, retention, and monetization for a consumer social app. Included QA on predictive models with a deliberate focus on protecting users from the psychological harm of unmoderated AI.",
     summary:
       "Owned a broad product surface spanning infrastructure, growth, retention, and monetization for a consumer iOS and Android B2C social astrology app.",
     sections: [
@@ -38,12 +38,54 @@ const roles = [
     ],
   },
   {
+    company: "Hudson Institute",
+    title: "Technology Policy Research Intern",
+    dates: "May 2019 – Jul 2019",
+    subtitle: "Washington, D.C.",
+    teaser:
+      "Researched how supply chains and semiconductor policy govern access to frontier compute. This was where I first recognized AI safety as fundamentally a geopolitical problem — control over compute is control over whose values shape frontier models.",
+    summary:
+      "Supported federal trade strategy research on China, semiconductors, and emerging AI capabilities — analyzing how supply chains and technology policy shape the global balance of power in frontier technology.",
+    sections: [
+      {
+        heading: "Research Focus",
+        points: [
+          "Analyzed rare earth and chip supply chains, technical patents, and U.S.-China trade developments to support federal trade strategy research.",
+          "Researched how international supply chains, rare earth metals, and semiconductor production govern access to frontier compute.",
+          "Identified that control over compute functionally means control over whose values shape frontier AI models — an early throughline connecting geopolitics to AI governance.",
+        ],
+      },
+    ],
+  },
+  {
+    company: "Draper Laboratory",
+    title: "Machine Learning Intern",
+    dates: "May 2018 – Aug 2018",
+    subtitle: "Cambridge, MA",
+    teaser:
+      "Developed adversarial ML algorithms to test the robustness of government AI systems. Demonstrated that models are vulnerable to adversarial attacks, poisoning, and misalignment — establishing robustness as a prerequisite for safety.",
+    summary:
+      "Led security testing of internal AI systems for a government research project, using adversarial methods to identify and mitigate model vulnerabilities.",
+    sections: [
+      {
+        heading: "Adversarial ML & Model Security",
+        points: [
+          "Developed adversarial ML algorithms to test the robustness of internal AI systems, surfacing concrete vulnerabilities to adversarial attacks and data poisoning.",
+          "Demonstrated that models are vulnerable to adversarial attacks, poisoning, and misalignment — establishing that technical robustness is a necessary, not optional, component of AI safety.",
+        ],
+      },
+    ],
+  },
+];
+
+const otherRoles = [
+  {
     company: "January AI",
     title: "Associate Product Manager",
     dates: "Aug 2020 – Aug 2021",
     subtitle: "iOS, Android, and Hardware",
-    teaser: "0→1 launch of a metabolic health app + hardware program in a HIPAA-regulated environment.",
-    open: false,
+    teaser:
+      "Supported the 0→1 launch of a metabolic health app + hardware program in a HIPAA-regulated environment. Built the analytics instrumentation layer from scratch and redesigned onboarding, cutting session time by 70%.",
     summary:
       "Supported the 0→1 launch of a B2C metabolic health app + hardware program, driving device integration, growth, and analytics in a HIPAA-regulated environment.",
     sections: [
@@ -73,53 +115,12 @@ const roles = [
     ],
   },
   {
-    company: "Hudson Institute",
-    title: "Technology Policy Research Intern",
-    dates: "May 2019 – Jul 2019",
-    subtitle: "Washington, D.C.",
-    teaser:
-      "Geopolitics of frontier compute — how supply chains and semiconductor policy shape who controls AI development.",
-    open: true,
-    summary:
-      "Supported federal trade strategy research on China, semiconductors, and emerging AI capabilities — analyzing how supply chains and technology policy shape the global balance of power in frontier technology.",
-    sections: [
-      {
-        heading: "Research Focus",
-        points: [
-          "Analyzed rare earth and chip supply chains, technical patents, and U.S.-China trade developments to support federal trade strategy research.",
-          "Researched how international supply chains, rare earth metals, and semiconductor production govern access to frontier compute.",
-          "Identified that control over compute functionally means control over whose values shape frontier AI models — an early throughline connecting geopolitics to AI governance.",
-        ],
-      },
-    ],
-  },
-  {
-    company: "Draper Laboratory",
-    title: "Machine Learning Intern",
-    dates: "May 2018 – Aug 2018",
-    subtitle: "Cambridge, MA",
-    teaser: "Adversarial ML research demonstrating that model robustness is a prerequisite for AI safety.",
-    open: true,
-    summary:
-      "Led security testing of internal AI systems for a government research project, using adversarial methods to identify and mitigate model vulnerabilities.",
-    sections: [
-      {
-        heading: "Adversarial ML & Model Security",
-        points: [
-          "Developed adversarial ML algorithms to test the robustness of internal AI systems, surfacing concrete vulnerabilities to adversarial attacks and data poisoning.",
-          "Demonstrated that models are vulnerable to adversarial attacks, poisoning, and misalignment — establishing that technical robustness is a necessary, not optional, component of AI safety.",
-        ],
-      },
-    ],
-  },
-];
-
-const earlierRoles = [
-  {
     company: "Emory University, Systems Neural Engineering Lab",
     title: "Student Researcher",
     dates: "Aug 2017 – May 2019",
-    description:
+    teaser:
+      "Led development of an ML system linking brain signals to physical movements for neuroscience research, and automated behavioral analysis for the lab.",
+    summary:
       "Led development of an ML system linking brain signals to physical movements, and automated behavioral analysis for neuroscience research.",
   },
 ];
@@ -130,65 +131,21 @@ const earlierRoles = [
     Experience
   </h1>
 
-  <div class="mt-10 space-y-4">
-    {
-      roles.map((role) => (
-        <details class="group border-b border-neutral-200 pb-4 dark:border-neutral-800" open={role.open}>
-          <summary class="flex cursor-pointer list-none items-start justify-between gap-4 py-2 [&::-webkit-details-marker]:hidden">
-            <div>
-              <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
-                {role.title} · {role.company}
-              </h2>
-              <p class="text-sm text-neutral-500 dark:text-neutral-400">{role.dates}</p>
-              <p class="mt-1 text-neutral-600 dark:text-neutral-400">{role.teaser}</p>
-            </div>
-            <svg
-              class="mt-1 h-4 w-4 shrink-0 text-neutral-400 transition-transform group-open:rotate-180"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </summary>
-          <div class="mt-4">
-            {role.subtitle && (
-              <p class="text-sm text-neutral-500 dark:text-neutral-400">{role.subtitle}</p>
-            )}
-            <p class="mt-2 text-neutral-700 dark:text-neutral-300">{role.summary}</p>
-            <div class="mt-6 space-y-6">
-              {role.sections.map((section) => (
-                <div>
-                  <h3 class="font-medium text-neutral-900 dark:text-neutral-100">{section.heading}</h3>
-                  <ul class="mt-2 list-disc space-y-1.5 pl-5 text-neutral-600 dark:text-neutral-400">
-                    {section.points.map((point) => (
-                      <li>{point}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </details>
-      ))
-    }
-  </div>
+  <section class="mt-10">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+      Relevant Experience
+    </h2>
+    <div class="mt-4 space-y-4">
+      {relevantRoles.map((role) => <ExperienceEntry {...role} />)}
+    </div>
+  </section>
 
-  <section class="mt-16 border-t border-neutral-200 pt-10 dark:border-neutral-800">
-    <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Earlier / Research</h2>
-    <ul class="mt-6 space-y-6">
-      {
-        earlierRoles.map((role) => (
-          <li>
-            <p class="font-medium text-neutral-900 dark:text-neutral-100">
-              {role.title} · {role.company}
-            </p>
-            <p class="text-sm text-neutral-500 dark:text-neutral-400">{role.dates}</p>
-            <p class="mt-1 text-neutral-600 dark:text-neutral-400">{role.description}</p>
-          </li>
-        ))
-      }
-    </ul>
+  <section class="mt-14">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+      Other Experience
+    </h2>
+    <div class="mt-4 space-y-4">
+      {otherRoles.map((role) => <ExperienceEntry {...role} />)}
+    </div>
   </section>
 </Layout>

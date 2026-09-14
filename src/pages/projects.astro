@@ -1,16 +1,57 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ProjectEntry from "../components/ProjectEntry.astro";
 
-const projects = [
+const press = [
+  {
+    title: "The Love Machine Learning",
+    outlet: "Towards Data Science",
+    link: "https://medium.com/data-science/the-love-machine-learning-2cfa524a8c78",
+  },
+  {
+    title: "The Politics of Romance",
+    outlet: "The Startup (Medium)",
+    link: "https://medium.com/swlh/the-politics-of-romance-fb41dbad5f19",
+  },
+  {
+    title: "Machine Learning Fuels Campus Romance",
+    outlet: "Georgia Tech College of Computing",
+    link: "https://www.cc.gatech.edu/news/625853/machine-learning-fuels-campus-romance",
+  },
+  {
+    title: "Algorithmic matchmaking: How a group of Georgia Tech students...",
+    outlet: "11Alive",
+    link: "https://www.11alive.com/video/news/education/algorithmic-matchmaking/85-0ed7e13b-ba6d-45af-8bea-777ff813778f",
+  },
+  {
+    title: "Machine Learning in the Dating World",
+    outlet: "Her Campus",
+    link: "https://www.hercampus.com/school/ga-tech/machine-learning-dating-world/",
+  },
+];
+
+const relevantProjects = [
+  {
+    name: "The Love Machine",
+    dates: "Founder · AI + Web · Dec 2018 – Mar 2020",
+    teaser:
+      "Founded and built an AI-powered matchmaking platform that paired 3,000+ students using a genetic-algorithm compatibility model, scaling to 1,000 users in its first month. It was my first hands-on encounter with the weight of algorithmic influence on real relationships — the design choices behind a compatibility score aren't neutral.",
+    description:
+      "I designed the 32-question compatibility survey, built the scoring model (combining hard demographic constraints with weighted personality similarity and Likert-scale distance scoring), and led the \"midnight match drop\" launch mechanic — modeled after streetwear drop culture — that drove viral, real-world adoption across campus, culminating in a campus-wide Valentine's Day meetup event.",
+  },
   {
     name: "Compliment Machine",
     dates: "Jan 2017",
-    teaser: "Sentiment-analysis web app that compliments your photos — won an anti-harassment hackathon award.",
+    teaser:
+      "A web app that used Clarifai's vision API and NLTK's sentiment analysis to compliment user photos, winning \"Best Use of Clarifai API\" and the \"Hack Harassment Award\" at SwampHacks. An early example of designing ML-driven interpersonal software with intentional safeguards against harmful use.",
     description:
-      "A web app that compliments photos of the user, using the Clarifai vision API and NLTK's sentiment analysis. Won \"Best Use of Clarifai API\" and the \"Hack Harassment Award\" at SwampHacks, University of Florida.",
+      "Built at a hackathon focused on combating online harassment — combined computer vision and sentiment analysis to generate genuine, positive feedback on user photos.",
     tags: ["JavaScript", "Clarifai", "NLTK"],
     link: "https://github.com/chsahit/ComplimentMachine",
   },
+];
+
+const otherProjects = [
   {
     name: "Exploratory Genetic Data Analysis Tool",
     dates: "Jul 2017",
@@ -61,34 +102,6 @@ const projects = [
     link: "https://github.com/vawilson/Data-Dogism",
   },
 ];
-
-const press = [
-  {
-    title: "The Love Machine Learning",
-    outlet: "Towards Data Science",
-    link: "https://medium.com/data-science/the-love-machine-learning-2cfa524a8c78",
-  },
-  {
-    title: "The Politics of Romance",
-    outlet: "The Startup (Medium)",
-    link: "https://medium.com/swlh/the-politics-of-romance-fb41dbad5f19",
-  },
-  {
-    title: "Machine Learning Fuels Campus Romance",
-    outlet: "Georgia Tech College of Computing",
-    link: "https://www.cc.gatech.edu/news/625853/machine-learning-fuels-campus-romance",
-  },
-  {
-    title: "Algorithmic matchmaking: How a group of Georgia Tech students...",
-    outlet: "11Alive",
-    link: "https://www.11alive.com/video/news/education/algorithmic-matchmaking/85-0ed7e13b-ba6d-45af-8bea-777ff813778f",
-  },
-  {
-    title: "Machine Learning in the Dating World",
-    outlet: "Her Campus",
-    link: "https://www.hercampus.com/school/ga-tech/machine-learning-dating-world/",
-  },
-];
 ---
 
 <Layout title="Projects" description="Selected projects by Valentine Wilson.">
@@ -96,88 +109,40 @@ const press = [
     Projects
   </h1>
 
-  <article id="love-machine" class="mt-10 scroll-mt-20 rounded-lg border border-neutral-200 p-6 dark:border-neutral-800">
-    <p class="text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
-      Flagship project
-    </p>
-    <h2 class="mt-1 text-xl font-semibold text-neutral-900 dark:text-neutral-100">The Love Machine</h2>
-    <p class="text-sm text-neutral-500 dark:text-neutral-400">Founder · AI + Web · Dec 2018 – Mar 2020</p>
-    <p class="mt-4 text-neutral-700 dark:text-neutral-300">
-      While in college, I founded and built an AI-powered matchmaking platform that paired
-      students based on personality traits, values, and relationship preferences using a
-      genetic-algorithm compatibility model. It scaled to 1,000 users in its first month, grew
-      2x year-over-year, and culminated in a campus-wide "match drop" and Valentine's Day meetup
-      event — pairing 3,000+ students in total.
-    </p>
-    <p class="mt-3 text-neutral-700 dark:text-neutral-300">
-      I designed the 32-question compatibility survey, built the scoring model (combining hard
-      demographic constraints with weighted personality similarity and Likert-scale distance
-      scoring), and led the "midnight match drop" launch mechanic — modeled after streetwear
-      drop culture — that drove viral, real-world adoption across campus.
-    </p>
-    <p class="mt-3 text-neutral-700 dark:text-neutral-300">
-      It was also my first hands-on encounter with the weight of algorithmic influence on real
-      relationships — a compatibility score isn't neutral, and the design choices behind it
-      shape who meets whom and why.
-    </p>
-    <div class="mt-5">
-      <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100">As seen in:</p>
-      <ul class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
-        {
-          press.map((item) => (
-            <li>
-              <a href={item.link} class="text-neutral-600 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
-                {item.outlet}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+  <section class="mt-10">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+      Relevant Projects
+    </h2>
+    <div class="mt-4 space-y-4">
+      {
+        relevantProjects.map((project) => (
+          <ProjectEntry {...project}>
+            {project.name === "The Love Machine" && (
+              <div class="mt-4">
+                <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100">As seen in:</p>
+                <ul class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                  {press.map((item) => (
+                    <li>
+                      <a href={item.link} class="text-neutral-600 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
+                        {item.outlet}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </ProjectEntry>
+        ))
+      }
     </div>
-  </article>
+  </section>
 
-  <div class="mt-10 space-y-4">
-    {
-      projects.map((project) => (
-        <details class="group border-b border-neutral-200 pb-4 dark:border-neutral-800">
-          <summary class="flex cursor-pointer list-none items-start justify-between gap-4 py-2 [&::-webkit-details-marker]:hidden">
-            <div>
-              <h2 class="text-lg font-medium text-neutral-900 dark:text-neutral-100">{project.name}</h2>
-              <p class="text-sm text-neutral-500 dark:text-neutral-400">{project.dates}</p>
-              <p class="mt-1 text-neutral-600 dark:text-neutral-400">{project.teaser}</p>
-            </div>
-            <svg
-              class="mt-1 h-4 w-4 shrink-0 text-neutral-400 transition-transform group-open:rotate-180"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </summary>
-          <div class="mt-3">
-            <p class="text-neutral-600 dark:text-neutral-400">{project.description}</p>
-            <div class="mt-3 flex flex-wrap items-center gap-2">
-              {project.tags.map((tag) => (
-                <span class="rounded-full bg-neutral-100 px-2.5 py-1 text-xs text-neutral-600 dark:bg-neutral-900 dark:text-neutral-400">
-                  {tag}
-                </span>
-              ))}
-              {project.link && (
-                <a href={project.link} class="text-xs text-neutral-500 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
-                  View
-                </a>
-              )}
-              {project.githubLink && (
-                <a href={project.githubLink} class="text-xs text-neutral-500 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
-                  Source
-                </a>
-              )}
-            </div>
-          </div>
-        </details>
-      ))
-    }
-  </div>
+  <section class="mt-14">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+      Other Projects
+    </h2>
+    <div class="mt-4 space-y-4">
+      {otherProjects.map((project) => <ProjectEntry {...project} />)}
+    </div>
+  </section>
 </Layout>
