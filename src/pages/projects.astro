@@ -1,19 +1,85 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// TODO: replace with your real projects
 const projects = [
   {
-    name: "Project One",
-    description: "A short description of what this project does and why it matters.",
-    link: "#",
-    tags: ["TypeScript", "React"],
+    name: "Compliment Machine",
+    dates: "Jan 2017",
+    description:
+      "A web app that compliments photos of the user, using the Clarifai vision API and NLTK's sentiment analysis. Won \"Best Use of Clarifai API\" and the \"Hack Harassment Award\" at SwampHacks, University of Florida.",
+    tags: ["JavaScript", "Clarifai", "NLTK"],
+    link: "https://github.com/chsahit/ComplimentMachine",
   },
   {
-    name: "Project Two",
-    description: "A short description of what this project does and why it matters.",
-    link: "#",
-    tags: ["Python"],
+    name: "Exploratory Genetic Data Analysis Tool",
+    dates: "Jul 2017",
+    description:
+      "A tool built with Institut Pasteur to explore gene expression data using PCA, t-SNE, Scree Plots, and K-means clustering.",
+    tags: ["R", "PCA", "Clustering"],
+    link: "https://github.com/vawilson/Exploratory-Genetic-Data-Analysis-Tool",
+  },
+  {
+    name: "Georgia Tech Safewalk App",
+    dates: "Sep – Oct 2016",
+    description:
+      "An iOS app that processes local crime data alongside Google Maps information to identify the safest walking route between two points on campus.",
+    tags: ["iOS"],
+  },
+  {
+    name: "3D Detection of Zebrafish Movement",
+    dates: "Sep 2015 – Jun 2016",
+    description:
+      "Built a device to track and store zebrafish movement in 3D space, collaborating with a CS teacher on the tracking software and a biology teacher on habitat design. Used by Sidwell's Molecular Neuroscience class and Biological Research and Investigational Neuroscience Club.",
+    tags: ["Hardware", "Computer Vision"],
+  },
+  {
+    name: "Word2vec Analogy Solver",
+    dates: "Dec 2016 – May 2017",
+    description: "Trained a Word2vec neural word-embedding model on Wikipedia to attempt to pass the TOEFL.",
+    tags: ["NLP", "Word2vec"],
+  },
+  {
+    name: "A History of Western Typography",
+    dates: "May 2020",
+    description: "An interactive scrolling visualization examining how historical events influenced the development of typography.",
+    tags: ["Data Viz", "JavaScript"],
+    link: "https://vawilson.github.io/projects/typography_tree_story/",
+    githubLink: "https://github.com/vawilson/Typography_Tree",
+  },
+  {
+    name: "Data-Dogism",
+    dates: "2019",
+    description: "Visualizing dog-walking data.",
+    tags: ["Python", "Data Viz"],
+    link: "https://github.com/vawilson/Data-Dogism",
+  },
+];
+
+const press = [
+  {
+    title: "The Love Machine Learning",
+    outlet: "Towards Data Science",
+    link: "https://medium.com/data-science/the-love-machine-learning-2cfa524a8c78",
+  },
+  {
+    title: "The Politics of Romance",
+    outlet: "The Startup (Medium)",
+    link: "https://medium.com/swlh/the-politics-of-romance-fb41dbad5f19",
+  },
+  {
+    title: "Machine Learning Fuels Campus Romance",
+    outlet: "Georgia Tech College of Computing",
+    link: "https://www.cc.gatech.edu/news/625853/machine-learning-fuels-campus-romance",
+  },
+  {
+    title: "Algorithmic matchmaking: How a group of Georgia Tech students...",
+    outlet: "11Alive",
+    link: "https://www.11alive.com/video/news/education/algorithmic-matchmaking/85-0ed7e13b-ba6d-45af-8bea-777ff813778f",
+  },
+  {
+    title: "Machine Learning in the Dating World",
+    outlet: "Her Campus",
+    link: "https://www.hercampus.com/school/ga-tech/machine-learning-dating-world/",
   },
 ];
 ---
@@ -22,24 +88,72 @@ const projects = [
   <h1 class="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
     Projects
   </h1>
-  <p class="mt-2 text-neutral-600 dark:text-neutral-400">A few things I've built.</p>
+  <p class="mt-2 text-neutral-600 dark:text-neutral-400">
+    Personal and academic projects — from a campus-wide matchmaking platform to zebrafish
+    tracking hardware.
+  </p>
 
-  <ul class="mt-8 space-y-8">
+  <article id="love-machine" class="mt-10 scroll-mt-20 rounded-lg border border-neutral-200 p-6 dark:border-neutral-800">
+    <p class="text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+      Flagship project
+    </p>
+    <h2 class="mt-1 text-xl font-semibold text-neutral-900 dark:text-neutral-100">The Love Machine</h2>
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">Founder · AI + Web · Dec 2018 – Mar 2020</p>
+    <p class="mt-4 text-neutral-700 dark:text-neutral-300">
+      While in college, I founded and built an AI-powered matchmaking platform that paired
+      students based on personality traits, values, and relationship preferences using a
+      genetic-algorithm compatibility model. It scaled to 1,000 users in its first month, grew
+      2x year-over-year, and culminated in a campus-wide "match drop" and Valentine's Day meetup
+      event — pairing 3,000+ students in total.
+    </p>
+    <p class="mt-3 text-neutral-700 dark:text-neutral-300">
+      I designed the 32-question compatibility survey, built the scoring model (combining hard
+      demographic constraints with weighted personality similarity and Likert-scale distance
+      scoring), and led the "midnight match drop" launch mechanic — modeled after streetwear
+      drop culture — that drove viral, real-world adoption across campus.
+    </p>
+    <div class="mt-5">
+      <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100">As seen in:</p>
+      <ul class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+        {
+          press.map((item) => (
+            <li>
+              <a href={item.link} class="text-neutral-600 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
+                {item.outlet}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </article>
+
+  <ul class="mt-10 space-y-8">
     {
       projects.map((project) => (
         <li class="border-b border-neutral-200 pb-8 dark:border-neutral-800 last:border-0">
-          <a href={project.link} class="group">
-            <h2 class="text-lg font-medium text-neutral-900 group-hover:underline dark:text-neutral-100">
-              {project.name}
-            </h2>
-          </a>
+          {project.link ? (
+            <a href={project.link} class="group">
+              <h2 class="text-lg font-medium text-neutral-900 group-hover:underline dark:text-neutral-100">
+                {project.name}
+              </h2>
+            </a>
+          ) : (
+            <h2 class="text-lg font-medium text-neutral-900 dark:text-neutral-100">{project.name}</h2>
+          )}
+          <p class="text-sm text-neutral-500 dark:text-neutral-400">{project.dates}</p>
           <p class="mt-1 text-neutral-600 dark:text-neutral-400">{project.description}</p>
-          <div class="mt-3 flex flex-wrap gap-2">
+          <div class="mt-3 flex flex-wrap items-center gap-2">
             {project.tags.map((tag) => (
               <span class="rounded-full bg-neutral-100 px-2.5 py-1 text-xs text-neutral-600 dark:bg-neutral-900 dark:text-neutral-400">
                 {tag}
               </span>
             ))}
+            {project.githubLink && (
+              <a href={project.githubLink} class="text-xs text-neutral-500 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
+                Source
+              </a>
+            )}
           </div>
         </li>
       ))
