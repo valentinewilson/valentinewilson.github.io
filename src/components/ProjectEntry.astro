@@ -22,15 +22,11 @@ const { name, dates, teaser, description, tags, siteLink, githubLink, collapsibl
           <p class="text-sm text-neutral-500 dark:text-neutral-400">{dates}</p>
           <p class="mt-1 text-neutral-600 dark:text-neutral-400">{teaser}</p>
         </div>
-        <svg
-          class="mt-1 h-4 w-4 shrink-0 text-neutral-400 transition-transform group-open:rotate-180"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
+        <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-neutral-500 transition-transform group-open:rotate-180 dark:border-neutral-700 dark:text-neutral-400">
+          <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
       </summary>
       <div class="mt-3">
         {description && <p class="text-neutral-600 dark:text-neutral-400">{description}</p>}
