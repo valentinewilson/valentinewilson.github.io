@@ -1,0 +1,192 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const press = [
+  {
+    title: "The Love Machine Learning",
+    outlet: "Towards Data Science",
+    link: "https://medium.com/data-science/the-love-machine-learning-2cfa524a8c78",
+  },
+  {
+    title: "The Politics of Romance",
+    outlet: "The Startup (Medium)",
+    link: "https://medium.com/swlh/the-politics-of-romance-fb41dbad5f19",
+  },
+  {
+    title: "Machine Learning Fuels Campus Romance",
+    outlet: "Georgia Tech College of Computing",
+    link: "https://www.cc.gatech.edu/news/625853/machine-learning-fuels-campus-romance",
+  },
+  {
+    title: "Algorithmic matchmaking: How a group of Georgia Tech students...",
+    outlet: "11Alive",
+    link: "https://www.11alive.com/video/news/education/algorithmic-matchmaking/85-0ed7e13b-ba6d-45af-8bea-777ff813778f",
+  },
+  {
+    title: "Machine Learning in the Dating World",
+    outlet: "Her Campus",
+    link: "https://www.hercampus.com/school/ga-tech/machine-learning-dating-world/",
+  },
+];
+---
+
+<Layout
+  title="The Love Machine · Case Study"
+  description="Case study: an AI-powered campus matchmaking platform that paired 3,000+ students."
+>
+  <p class="text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+    Case Study
+  </p>
+  <h1 class="mt-1 text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+    The Love Machine
+  </h1>
+  <p class="text-sm text-neutral-500 dark:text-neutral-400">Founder · AI + Web · December 2018 – March 2020</p>
+
+  <p class="mt-6 max-w-2xl text-neutral-700 dark:text-neutral-300">
+    While in college, I founded and built an AI-powered matchmaking platform designed to help
+    students meet compatible partners within the university community. The product used
+    behavioral data and a genetic-algorithm approach to generate high-compatibility matches, and
+    culminated in a campus-wide Valentine's Day match reveal and meetup event.
+  </p>
+  <p class="mt-4 max-w-2xl text-neutral-700 dark:text-neutral-300">
+    The platform scaled quickly, reaching 1,000 users in its first month and continuing to grow
+    at a rate of 2x year-over-year.
+  </p>
+
+  <div class="mt-12 space-y-10">
+    <section>
+      <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Problem</h2>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        University campuses are dense social environments, yet many students struggle to meet
+        compatible partners. Academic workloads, extracurricular commitments, and fragmented
+        social circles limit opportunities for organic connections.
+      </p>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        At the same time, traditional dating apps introduce friction and safety concerns because
+        users are interacting with strangers outside their social networks. Many potentially
+        compatible students, therefore, never meet despite sharing the same campus community.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Insight</h2>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        A university campus provides a dense, high-trust social network where algorithmic
+        matchmaking can work particularly well. Students share physical proximity, social
+        accountability, and overlapping communities, which makes them more comfortable meeting
+        peers recommended by a compatibility system, even without prior interaction.
+      </p>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        If compatibility could be modeled using structured behavioral data, an algorithm could
+        surface meaningful matches that might otherwise never occur.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Solution</h2>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        I led the build of an AI-powered matchmaking platform that paired students based on
+        personality traits, values, and relationship preferences. Participants completed a
+        behavioral survey, which fed into a matching algorithm designed to optimize compatibility
+        across the entire participant population.
+      </p>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">To create excitement and encourage real-world interaction:</p>
+      <ul class="mt-2 list-disc space-y-1.5 pl-5 text-neutral-600 dark:text-neutral-400">
+        <li>Matches were revealed simultaneously in a midnight "match drop" on Valentine's Day.</li>
+        <li>Participants were invited to a Valentine's Day dinner event where they could meet their matches in person.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Key Product Decisions</h2>
+
+      <h3 class="mt-5 font-medium text-neutral-900 dark:text-neutral-100">
+        Designing for Participation: Behavioral Data Collection
+      </h3>
+      <p class="mt-2 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        To generate high-quality matches, the system required rich behavioral data. I designed a
+        32-question survey capturing demographics, values, personality traits, lifestyle
+        preferences, and relationship expectations.
+      </p>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        However, long surveys typically have low completion rates, especially among college
+        students. To improve participation, I deliberately designed the survey to be humorous and
+        easy to complete, using playful language, lighthearted response options, and Likert scales
+        as opposed to text entry.
+      </p>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        This approach made the experience feel more like a campus social activity than a data
+        form, which significantly increased engagement and encouraged students to share the
+        survey with friends.
+      </p>
+
+      <h3 class="mt-6 font-medium text-neutral-900 dark:text-neutral-100">
+        Building the Compatibility Scoring Model
+      </h3>
+      <p class="mt-2 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        I developed the scoring framework used to evaluate potential matches across the
+        participant pool. The model combined:
+      </p>
+      <ul class="mt-2 list-disc space-y-1.5 pl-5 text-neutral-600 dark:text-neutral-400">
+        <li>Demographic constraints (e.g., gender preference, religion, political affiliation)</li>
+        <li>Weighted personality similarity</li>
+        <li>Squared distance scoring across Likert-scale responses to measure behavioral alignment</li>
+      </ul>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        To improve match quality, I identified several relationship-critical attributes and
+        applied weighted multipliers so those factors had greater influence in the matching
+        algorithm. This scoring framework enabled the system to balance hard constraints (who can
+        match) with soft compatibility signals (who should match best) before feeding candidate
+        pairings into the optimization algorithm.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Launch Strategy</h2>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        I modeled the release mechanic after streetwear drop culture: all matches revealed
+        simultaneously at midnight on Valentine's Day, creating urgency, a shared campus moment,
+        and immediate viral spread as students opened results together.
+      </p>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        At 12:00 AM on Valentine's Day, participants simultaneously received their algorithmically
+        generated matches and could opt in to meet. The reveal was followed by a Valentine's Day
+        dinner event, helping convert algorithmic matches into real-world interactions in a
+        low-pressure environment.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Growth &amp; Distribution</h2>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">Initial user acquisition was driven through:</p>
+      <ul class="mt-2 list-disc space-y-1.5 pl-5 text-neutral-600 dark:text-neutral-400">
+        <li>Campus flyering</li>
+        <li>Social media promotion</li>
+        <li>Academic email lists</li>
+        <li>Word-of-mouth referrals</li>
+      </ul>
+      <p class="mt-3 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        Positioning the product as both a data-driven matchmaking experiment and a campus social
+        event helped generate strong organic adoption.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Media Coverage</h2>
+      <ul class="mt-3 space-y-2">
+        {press.map((item) => (
+          <li>
+            <a href={item.link} class="text-neutral-700 underline hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-neutral-100">
+              {item.title}
+            </a>
+            <span class="text-sm text-neutral-500 dark:text-neutral-400"> · {item.outlet}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+
+  <p class="mt-12 border-t border-neutral-200 pt-6 text-sm text-neutral-500 dark:text-neutral-400 dark:border-neutral-800">
+    <a href="/projects" class="underline hover:text-neutral-900 dark:hover:text-neutral-100">← Back to Projects</a>
+  </p>
+</Layout>
