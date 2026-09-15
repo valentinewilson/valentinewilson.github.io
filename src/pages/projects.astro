@@ -30,7 +30,7 @@ const press = [
   },
 ];
 
-const relevantProjects = [
+const machineLearningProjects = [
   {
     name: "The Love Machine",
     dates: "Founder · AI + Web · Dec 2018 – Mar 2020",
@@ -49,9 +49,17 @@ const relevantProjects = [
     tags: ["JavaScript", "Clarifai", "NLTK"],
     githubLink: "https://github.com/chsahit/ComplimentMachine",
   },
+  {
+    name: "3D Detection of Zebrafish Movement",
+    dates: "Sep 2015 – Jun 2016",
+    teaser: "Hardware and software system to track zebrafish movement in 3D for a neuroscience research program.",
+    tags: ["Hardware", "Computer Vision"],
+    githubLink: "https://github.com/vawilson/3D-Zebrafish-Detection",
+    collapsible: false,
+  },
 ];
 
-const otherProjects = [
+const dataVizProjects = [
   {
     name: "Exploratory Genetic Data Analysis Tool",
     dates: "Jul 2017",
@@ -60,14 +68,6 @@ const otherProjects = [
       "A tool built with Institut Pasteur to explore gene expression data using PCA, t-SNE, Scree Plots, and K-means clustering.",
     tags: ["R", "PCA", "Clustering"],
     githubLink: "https://github.com/vawilson/Exploratory-Genetic-Data-Analysis-Tool",
-  },
-  {
-    name: "3D Detection of Zebrafish Movement",
-    dates: "Sep 2015 – Jun 2016",
-    teaser: "Hardware and software system to track zebrafish movement in 3D for a neuroscience research program.",
-    tags: ["Hardware", "Computer Vision"],
-    githubLink: "https://github.com/vawilson/3D-Zebrafish-Detection",
-    collapsible: false,
   },
   {
     name: "A History of Western Typography",
@@ -89,11 +89,11 @@ const otherProjects = [
 
   <section class="mt-10">
     <h2 class="text-sm font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
-      Relevant Projects
+      Machine Learning
     </h2>
     <div class="mt-4 space-y-4">
       {
-        relevantProjects.map((project) => (
+        machineLearningProjects.map((project) => (
           <ProjectEntry {...project}>
             {project.name === "The Love Machine" && (
               <div class="mt-4">
@@ -117,10 +117,10 @@ const otherProjects = [
 
   <section class="mt-14">
     <h2 class="text-sm font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
-      Other Projects
+      Data Visualization
     </h2>
     <div class="mt-4 space-y-4">
-      {otherProjects.map((project) => <ProjectEntry {...project} />)}
+      {dataVizProjects.map((project) => <ProjectEntry {...project} />)}
     </div>
   </section>
 </Layout>
