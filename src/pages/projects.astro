@@ -2,43 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import ProjectEntry from "../components/ProjectEntry.astro";
 
-const press = [
-  {
-    title: "The Love Machine Learning",
-    outlet: "Towards Data Science",
-    link: "https://medium.com/data-science/the-love-machine-learning-2cfa524a8c78",
-  },
-  {
-    title: "The Politics of Romance",
-    outlet: "The Startup (Medium)",
-    link: "https://medium.com/swlh/the-politics-of-romance-fb41dbad5f19",
-  },
-  {
-    title: "Machine Learning Fuels Campus Romance",
-    outlet: "Georgia Tech College of Computing",
-    link: "https://www.cc.gatech.edu/news/625853/machine-learning-fuels-campus-romance",
-  },
-  {
-    title: "Algorithmic matchmaking: How a group of Georgia Tech students...",
-    outlet: "11Alive",
-    link: "https://www.11alive.com/video/news/education/algorithmic-matchmaking/85-0ed7e13b-ba6d-45af-8bea-777ff813778f",
-  },
-  {
-    title: "Machine Learning in the Dating World",
-    outlet: "Her Campus",
-    link: "https://www.hercampus.com/school/ga-tech/machine-learning-dating-world/",
-  },
-];
-
 const machineLearningProjects = [
   {
     name: "The Love Machine",
     dates: "Founder · AI + Web · Dec 2018 – Mar 2020",
     teaser:
-      "Founded and built an AI-powered matchmaking platform that paired 3,000+ students using a genetic-algorithm compatibility model, scaling to 1,000 users in its first month. It was my first hands-on encounter with the weight of algorithmic influence on real relationships: the design choices behind a compatibility score aren't neutral.",
-    description:
-      "I designed the 32-question compatibility survey, built the scoring model (combining hard demographic constraints with weighted personality similarity and Likert-scale distance scoring), and led the \"midnight match drop\" launch mechanic (modeled after streetwear drop culture) that drove viral, real-world adoption across campus, culminating in a campus-wide Valentine's Day meetup event.",
+      "Founded and built an AI-powered matchmaking platform that paired 3,000+ Georgia Tech students using a genetic-algorithm compatibility model, culminating in a campus-wide Valentine's Day match reveal.",
     caseStudyLink: "/love-machine",
+    collapsible: false,
   },
   {
     name: "Compliment Machine",
@@ -96,17 +67,17 @@ const dataVizProjects = [
         machineLearningProjects.map((project) => (
           <ProjectEntry {...project}>
             {project.name === "The Love Machine" && (
-              <div class="mt-4">
-                <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100">As seen in:</p>
-                <ul class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
-                  {press.map((item) => (
-                    <li>
-                      <a href={item.link} class="text-neutral-600 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
-                        {item.outlet}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+              <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <span>Analysis:</span>
+                <a href="https://medium.com/data-science/the-love-machine-learning-2cfa524a8c78" class="underline hover:text-neutral-900 dark:hover:text-neutral-100">
+                  Towards Data Science
+                </a>
+                <a href="https://medium.com/swlh/the-politics-of-romance-fb41dbad5f19" class="underline hover:text-neutral-900 dark:hover:text-neutral-100">
+                  The Politics of Romance
+                </a>
+                <a href="/love-machine#media-coverage" class="underline hover:text-neutral-900 dark:hover:text-neutral-100">
+                  Media Coverage
+                </a>
               </div>
             )}
           </ProjectEntry>

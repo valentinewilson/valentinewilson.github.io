@@ -67,6 +67,11 @@ const { name, dates, teaser, description, tags, siteLink, githubLink, caseStudyL
             {tag}
           </span>
         ))}
+        {caseStudyLink && (
+          <a href={caseStudyLink} class="text-xs font-medium text-neutral-900 underline hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-300">
+            Case Study
+          </a>
+        )}
         {siteLink && (
           <a href={siteLink} class="text-xs text-neutral-500 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
             Site
