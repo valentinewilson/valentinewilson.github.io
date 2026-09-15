@@ -5,12 +5,12 @@ interface Props {
   teaser: string;
   description?: string;
   tags?: string[];
-  link?: string;
+  siteLink?: string;
   githubLink?: string;
   collapsible?: boolean;
 }
 
-const { name, dates, teaser, description, tags, link, githubLink, collapsible = true } = Astro.props;
+const { name, dates, teaser, description, tags, siteLink, githubLink, collapsible = true } = Astro.props;
 ---
 
 {
@@ -40,14 +40,14 @@ const { name, dates, teaser, description, tags, link, githubLink, collapsible = 
               {tag}
             </span>
           ))}
-          {link && (
-            <a href={link} class="text-xs text-neutral-500 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
-              View
+          {siteLink && (
+            <a href={siteLink} class="text-xs text-neutral-500 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
+              Site
             </a>
           )}
           {githubLink && (
             <a href={githubLink} class="text-xs text-neutral-500 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
-              Source
+              GitHub
             </a>
           )}
         </div>
@@ -65,14 +65,14 @@ const { name, dates, teaser, description, tags, link, githubLink, collapsible = 
             {tag}
           </span>
         ))}
-        {link && (
-          <a href={link} class="text-xs text-neutral-500 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
-            View
+        {siteLink && (
+          <a href={siteLink} class="text-xs text-neutral-500 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
+            Site
           </a>
         )}
         {githubLink && (
           <a href={githubLink} class="text-xs text-neutral-500 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
-            Source
+            GitHub
           </a>
         )}
       </div>
