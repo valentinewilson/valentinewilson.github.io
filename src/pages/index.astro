@@ -1,5 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const background = [
+  "7+ years building data-driven products",
+  "Started at 17 as an ML data annotator",
+  "Founded a startup from 0→1, launched products, scaled teams",
+  "Generalist across engineering, research, product, and data",
+];
+
+const interests = [
+  "Social media and psychological health",
+  "AI's impact on work and labor",
+  "Healthy AI-human relationships",
+  "AI safety and governance — technical, geopolitical, and human",
+];
 ---
 
 <Layout title="Home">
@@ -7,19 +21,45 @@ import Layout from "../layouts/Layout.astro";
     <h1 class="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
       Hi, I'm Valentine.
     </h1>
-    <p class="mt-4 max-w-xl text-neutral-600 dark:text-neutral-400">
-      I've spent 7+ years building data-driven products, grounded in software engineering and AI
-      research. Started at 17 as an ML data annotator, launched products from 0→1, scaled teams
-      and growth. Generalist across engineering, research, product, and data.
+    <p class="mt-3 max-w-xl text-neutral-600 dark:text-neutral-400">
+      Product-minded generalist building data-driven products, grounded in software engineering
+      and AI research.
     </p>
-    <p class="mt-4 max-w-xl text-neutral-600 dark:text-neutral-400">
-      Most interested in: social media and psychological health, AI's impact on work and labor,
-      and healthy AI-human relationships. Increasingly focused on AI safety and governance —
-      spanning technical robustness, geopolitical stakes, and human impact.
+
+    <div class="mt-8 grid gap-8 sm:grid-cols-2">
+      <div>
+        <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+          Background
+        </h2>
+        <ul class="mt-3 space-y-2">
+          {background.map((item) => (
+            <li class="flex gap-2 text-neutral-700 dark:text-neutral-300">
+              <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-neutral-400 dark:bg-neutral-600" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+          Most interested in
+        </h2>
+        <ul class="mt-3 space-y-2">
+          {interests.map((item) => (
+            <li class="flex gap-2 text-neutral-700 dark:text-neutral-300">
+              <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-amber-400" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <p class="mt-8 flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+      <span class="h-2 w-2 rounded-full bg-emerald-400" />
+      Based in Philadelphia — looking for my next role
     </p>
-    <p class="mt-4 max-w-xl text-neutral-600 dark:text-neutral-400">
-      Based in Philadelphia, looking for my next role.
-    </p>
+
     <div class="mt-6 flex gap-4 text-sm">
       <a
         href="/experience"
