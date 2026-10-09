@@ -10,7 +10,8 @@ const machineLearningProjects = [
       "Founded and built an AI-powered matchmaking platform that paired 3,000+ Georgia Tech students using a genetic-algorithm compatibility model.",
       "Culminated in a campus-wide Valentine's Day match reveal event.",
     ],
-    links: [{ label: "Case Study", href: "/love-machine", primary: true }],
+    link: "/love-machine",
+    linkLabel: "Case Study",
   },
   {
     name: "Compliment Machine",
@@ -20,7 +21,8 @@ const machineLearningProjects = [
       "Won \"Best Use of Clarifai API\" and the \"Hack Harassment Award\" at SwampHacks — an early example of designing ML-driven interpersonal software with safeguards against harmful use.",
     ],
     tags: ["JavaScript", "Clarifai", "NLTK"],
-    links: [{ label: "View on GitHub", href: "https://github.com/chsahit/ComplimentMachine" }],
+    link: "https://github.com/chsahit/ComplimentMachine",
+    linkLabel: "View on GitHub",
   },
 ];
 
@@ -30,24 +32,24 @@ const dataVizProjects = [
     dates: "May 2020",
     bullets: ["Interactive scrolling visualization examining how historical events shaped the development of typography."],
     tags: ["Data Viz", "JavaScript"],
-    links: [
-      { label: "View Site", href: "https://vawilson.github.io/projects/typography_tree_story/" },
-      { label: "GitHub", href: "https://github.com/vawilson/Typography_Tree" },
-    ],
+    link: "https://vawilson.github.io/projects/typography_tree_story/",
+    linkLabel: "View Site",
   },
   {
     name: "Exploratory Genetic Data Analysis Tool",
     dates: "Jul 2017",
     bullets: ["Built with Institut Pasteur to explore gene expression data using PCA, t-SNE, Scree Plots, and K-means clustering."],
     tags: ["R", "PCA", "Clustering"],
-    links: [{ label: "View on GitHub", href: "https://github.com/vawilson/Exploratory-Genetic-Data-Analysis-Tool" }],
+    link: "https://github.com/vawilson/Exploratory-Genetic-Data-Analysis-Tool",
+    linkLabel: "View on GitHub",
   },
   {
     name: "3D Detection of Zebrafish Movement",
     dates: "Sep 2015 – Jun 2016",
     bullets: ["Hardware and software system to track zebrafish movement in 3D for a neuroscience research program."],
     tags: ["Hardware", "Computer Vision"],
-    links: [{ label: "View on GitHub", href: "https://github.com/vawilson/3D-Zebrafish-Detection" }],
+    link: "https://github.com/vawilson/3D-Zebrafish-Detection",
+    linkLabel: "View on GitHub",
   },
 ];
 ---
@@ -62,26 +64,7 @@ const dataVizProjects = [
       Machine Learning
     </h2>
     <div class="mt-4 space-y-4">
-      {
-        machineLearningProjects.map((project) => (
-          <EntryCard {...project}>
-            {project.name === "The Love Machine" && (
-              <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-500 dark:text-neutral-400">
-                <span>Analysis:</span>
-                <a href="https://medium.com/data-science/the-love-machine-learning-2cfa524a8c78" class="underline hover:text-neutral-900 dark:hover:text-neutral-100">
-                  Towards Data Science
-                </a>
-                <a href="https://medium.com/swlh/the-politics-of-romance-fb41dbad5f19" class="underline hover:text-neutral-900 dark:hover:text-neutral-100">
-                  The Politics of Romance
-                </a>
-                <a href="/love-machine#media-coverage" class="underline hover:text-neutral-900 dark:hover:text-neutral-100">
-                  Media Coverage
-                </a>
-              </div>
-            )}
-          </EntryCard>
-        ))
-      }
+      {machineLearningProjects.map((project) => <EntryCard {...project} />)}
     </div>
   </section>
 
