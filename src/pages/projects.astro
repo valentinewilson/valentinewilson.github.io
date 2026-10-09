@@ -1,24 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ProjectEntry from "../components/ProjectEntry.astro";
+import EntryCard from "../components/EntryCard.astro";
 
 const machineLearningProjects = [
   {
     name: "The Love Machine",
     dates: "Founder · AI + Web · Dec 2018 – Mar 2020",
-    teaser:
-      "Founded and built an AI-powered matchmaking platform that paired 3,000+ Georgia Tech students using a genetic-algorithm compatibility model, culminating in a campus-wide Valentine's Day match reveal.",
-    caseStudyLink: "/love-machine",
-    collapsible: false,
+    bullets: [
+      "Founded and built an AI-powered matchmaking platform that paired 3,000+ Georgia Tech students using a genetic-algorithm compatibility model.",
+      "Culminated in a campus-wide Valentine's Day match reveal event.",
+    ],
+    links: [{ label: "Case Study", href: "/love-machine", primary: true }],
   },
   {
     name: "Compliment Machine",
     dates: "Jan 2017",
-    teaser:
-      "A web app that used Clarifai's vision API and NLTK's sentiment analysis to compliment user photos, winning \"Best Use of Clarifai API\" and the \"Hack Harassment Award\" at SwampHacks. An early example of designing ML-driven interpersonal software with intentional safeguards against harmful use.",
+    bullets: [
+      "Web app using Clarifai's vision API and NLTK's sentiment analysis to compliment user photos.",
+      "Won \"Best Use of Clarifai API\" and the \"Hack Harassment Award\" at SwampHacks — an early example of designing ML-driven interpersonal software with safeguards against harmful use.",
+    ],
     tags: ["JavaScript", "Clarifai", "NLTK"],
-    githubLink: "https://github.com/chsahit/ComplimentMachine",
-    collapsible: false,
+    links: [{ label: "View on GitHub", href: "https://github.com/chsahit/ComplimentMachine" }],
   },
 ];
 
@@ -26,29 +28,26 @@ const dataVizProjects = [
   {
     name: "A History of Western Typography",
     dates: "May 2020",
-    teaser: "Interactive scrolling visualization on how history shaped typography.",
-    description: "An interactive scrolling visualization examining how historical events influenced the development of typography.",
+    bullets: ["Interactive scrolling visualization examining how historical events shaped the development of typography."],
     tags: ["Data Viz", "JavaScript"],
-    siteLink: "https://vawilson.github.io/projects/typography_tree_story/",
-    githubLink: "https://github.com/vawilson/Typography_Tree",
-    collapsible: false,
+    links: [
+      { label: "View Site", href: "https://vawilson.github.io/projects/typography_tree_story/" },
+      { label: "GitHub", href: "https://github.com/vawilson/Typography_Tree" },
+    ],
   },
   {
     name: "Exploratory Genetic Data Analysis Tool",
     dates: "Jul 2017",
-    description:
-      "A tool built with Institut Pasteur to explore gene expression data using PCA, t-SNE, Scree Plots, and K-means clustering.",
+    bullets: ["Built with Institut Pasteur to explore gene expression data using PCA, t-SNE, Scree Plots, and K-means clustering."],
     tags: ["R", "PCA", "Clustering"],
-    githubLink: "https://github.com/vawilson/Exploratory-Genetic-Data-Analysis-Tool",
-    collapsible: false,
+    links: [{ label: "View on GitHub", href: "https://github.com/vawilson/Exploratory-Genetic-Data-Analysis-Tool" }],
   },
   {
     name: "3D Detection of Zebrafish Movement",
     dates: "Sep 2015 – Jun 2016",
-    teaser: "Hardware and software system to track zebrafish movement in 3D for a neuroscience research program.",
+    bullets: ["Hardware and software system to track zebrafish movement in 3D for a neuroscience research program."],
     tags: ["Hardware", "Computer Vision"],
-    githubLink: "https://github.com/vawilson/3D-Zebrafish-Detection",
-    collapsible: false,
+    links: [{ label: "View on GitHub", href: "https://github.com/vawilson/3D-Zebrafish-Detection" }],
   },
 ];
 ---
@@ -65,7 +64,7 @@ const dataVizProjects = [
     <div class="mt-4 space-y-4">
       {
         machineLearningProjects.map((project) => (
-          <ProjectEntry {...project}>
+          <EntryCard {...project}>
             {project.name === "The Love Machine" && (
               <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-500 dark:text-neutral-400">
                 <span>Analysis:</span>
@@ -80,7 +79,7 @@ const dataVizProjects = [
                 </a>
               </div>
             )}
-          </ProjectEntry>
+          </EntryCard>
         ))
       }
     </div>
@@ -91,7 +90,7 @@ const dataVizProjects = [
       Data Visualization
     </h2>
     <div class="mt-4 space-y-4">
-      {dataVizProjects.map((project) => <ProjectEntry {...project} />)}
+      {dataVizProjects.map((project) => <EntryCard {...project} />)}
     </div>
   </section>
 </Layout>
