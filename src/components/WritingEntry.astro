@@ -1,0 +1,55 @@
+---
+interface Props {
+  name: string;
+  dates: string;
+  teaser: string;
+  tags?: string[];
+  link?: string;
+}
+
+const { name, dates, teaser, tags, link } = Astro.props;
+const Tag = link ? "a" : "div";
+const linkProps = link ? { href: link, target: "_blank", rel: "noopener noreferrer" } : {};
+---
+
+<Tag
+  {...linkProps}
+  class:list={[
+    "group block rounded-lg border p-5 transition-colors",
+    link
+      ? "border-neutral-200 hover:border-neutral-400 hover:bg-neutral-50 dark:border-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-900"
+      : "border-dashed border-neutral-200 dark:border-neutral-800",
+  ]}
+>
+  <div class="flex items-start justify-between gap-4">
+    <div>
+      <h3 class="text-lg font-medium text-neutral-900 dark:text-neutral-100">{name}</h3>
+      <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+        {dates}
+        {tags && tags.length > 0 && <> · {tags.join(" · ")}</>}
+      </p>
+    </div>
+    {link && (
+      <span
+        class="mt-1 shrink-0 text-neutral-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-neutral-900 dark:group-hover:text-neutral-100"
+        aria-hidden="true"
+      >
+        ↗
+      </span>
+    )}
+  </div>
+
+  <p class="mt-3 text-neutral-600 dark:text-neutral-400">{teaser}</p>
+
+  {
+    link ? (
+      <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-neutral-900 group-hover:underline dark:text-neutral-100">
+        Read the piece <span aria-hidden="true">→</span>
+      </span>
+    ) : (
+      <span class="mt-4 inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-1 text-xs text-neutral-500 dark:bg-neutral-900 dark:text-neutral-400">
+        Available on request
+      </span>
+    )
+  }
+</Tag>
