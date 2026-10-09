@@ -20,7 +20,7 @@
 
 <script>
   // Assembles the mailto link at runtime so the raw address never appears as a
-  // contiguous string in the static HTML — keeps it off simple scraper regexes.
+  // contiguous string in the static HTML, keeping it off simple scraper regexes.
   document.querySelectorAll<HTMLAnchorElement>(".email-link").forEach((el) => {
     const user = el.dataset.user;
     const domain = el.dataset.domain;

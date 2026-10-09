@@ -29,7 +29,7 @@ const {
 } = Astro.props;
 
 const isExternal = (href: string) => /^https?:\/\//.test(href);
-// A whole card can only be a single <a> when there's exactly one destination —
+// A whole card can only be a single <a> when there's exactly one destination;
 // extra secondary links would otherwise nest an <a> inside an <a>.
 const wholeCardClickable = Boolean(link) && secondaryLinks.length === 0;
 const Tag = wholeCardClickable ? "a" : "div";
