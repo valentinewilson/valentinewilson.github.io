@@ -14,6 +14,7 @@ interface Props {
   linkLabel?: string;
   secondaryLinks?: SecondaryLink[];
   noLinkLabel?: string;
+  note?: string;
 }
 
 const {
@@ -26,6 +27,7 @@ const {
   linkLabel = "View",
   secondaryLinks = [],
   noLinkLabel,
+  note,
 } = Astro.props;
 
 const isExternal = (href: string) => /^https?:\/\//.test(href);
@@ -132,6 +134,14 @@ const linkProps = wholeCardClickable
           {noLinkLabel}
         </span>
       )
+    )
+  }
+
+  {
+    note && (
+      <span class="mt-3 inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-1 text-xs text-neutral-500 dark:bg-neutral-900 dark:text-neutral-400">
+        {note}
+      </span>
     )
   }
 </Tag>
