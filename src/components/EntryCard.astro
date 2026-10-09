@@ -99,7 +99,7 @@ const linkProps = wholeCardClickable
             href={link}
             target={isExternal(link) ? "_blank" : undefined}
             rel={isExternal(link) ? "noopener noreferrer" : undefined}
-            class="text-sm text-neutral-700 underline hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-neutral-100"
+            class="text-sm font-medium text-neutral-900 hover:underline dark:text-neutral-100"
           >
             {linkLabel}
           </a>
@@ -112,7 +112,7 @@ const linkProps = wholeCardClickable
                 href={l.href}
                 target={isExternal(l.href) ? "_blank" : undefined}
                 rel={isExternal(l.href) ? "noopener noreferrer" : undefined}
-                class="text-sm text-neutral-700 underline hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-neutral-100"
+                class="text-sm font-medium text-neutral-900 hover:underline dark:text-neutral-100"
               >
                 {l.label}
               </a>
