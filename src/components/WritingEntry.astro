@@ -39,11 +39,11 @@ const linkProps = link ? { href: link, target: "_blank", rel: "noopener noreferr
     )}
   </div>
 
-  <div class="mt-3 space-y-1.5">
+  <ul class="mt-3 list-disc space-y-1 pl-5 text-neutral-600 dark:text-neutral-400">
     {teaser.map((line) => (
-      <p class="text-neutral-600 dark:text-neutral-400">{line}</p>
+      <li>{line}</li>
     ))}
-  </div>
+  </ul>
 
   {
     link ? (
