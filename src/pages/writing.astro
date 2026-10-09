@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectEntry from "../components/ProjectEntry.astro";
+
+const writingSamples = [
+  {
+    name: "[Towards Data Science article title]",
+    dates: "[Month Year]",
+    teaser: "[One or two sentence description of the piece.]",
+    tags: ["Towards Data Science"],
+    siteLink: "#",
+    collapsible: false,
+  },
+  {
+    name: "[Medium article title]",
+    dates: "[Month Year]",
+    teaser: "[One or two sentence description of the piece.]",
+    tags: ["Medium"],
+    siteLink: "#",
+    collapsible: false,
+  },
+  {
+    name: "[Policy memo title]",
+    dates: "[Month Year]",
+    teaser: "[One or two sentence description of the memo.]",
+    tags: ["Policy Memo"],
+    siteLink: "#",
+    collapsible: false,
+  },
+  {
+    name: "[Student newspaper article title]",
+    dates: "[Month Year]",
+    teaser: "[One or two sentence description of the piece.]",
+    tags: ["Student Newspaper"],
+    siteLink: "#",
+    collapsible: false,
+  },
+];
+---
+
+<Layout title="Writing" description="Writing samples by Valentine Wilson.">
+  <h1 class="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+    Writing
+  </h1>
+
+  <section class="mt-10">
+    <div class="mt-4 space-y-4">
+      {writingSamples.map((sample) => <ProjectEntry {...sample} />)}
+    </div>
+  </section>
+</Layout>
