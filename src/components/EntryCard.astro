@@ -97,40 +97,42 @@ const linkProps = wholeCardClickable
 
   {
     link ? (
-      <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1">
+      <div class="mt-4 flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+          {wholeCardClickable ? (
+            <span class="inline-flex items-center gap-1 text-sm font-medium text-neutral-900 group-hover:underline dark:text-neutral-100">
+              {linkLabel} <span aria-hidden="true">→</span>
+            </span>
+          ) : (
+            <a
+              href={link}
+              target={isExternal(link) ? "_blank" : undefined}
+              rel={isExternal(link) ? "noopener noreferrer" : undefined}
+              class="text-sm font-medium text-neutral-900 hover:underline dark:text-neutral-100"
+            >
+              {linkLabel}
+            </a>
+          )}
+          {secondaryLinks.length > 0 && (
+            <>
+              <span class="h-3.5 w-px bg-neutral-300 dark:bg-neutral-700" aria-hidden="true" />
+              {secondaryLinks.map((l) => (
+                <a
+                  href={l.href}
+                  target={isExternal(l.href) ? "_blank" : undefined}
+                  rel={isExternal(l.href) ? "noopener noreferrer" : undefined}
+                  class="text-sm font-medium text-neutral-900 hover:underline dark:text-neutral-100"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </>
+          )}
+        </div>
         {note && (
           <span class="inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-1 text-xs text-neutral-500 dark:bg-neutral-900 dark:text-neutral-400">
             {note}
           </span>
-        )}
-        {wholeCardClickable ? (
-          <span class="inline-flex items-center gap-1 text-sm font-medium text-neutral-900 group-hover:underline dark:text-neutral-100">
-            {linkLabel} <span aria-hidden="true">→</span>
-          </span>
-        ) : (
-          <a
-            href={link}
-            target={isExternal(link) ? "_blank" : undefined}
-            rel={isExternal(link) ? "noopener noreferrer" : undefined}
-            class="text-sm font-medium text-neutral-900 hover:underline dark:text-neutral-100"
-          >
-            {linkLabel}
-          </a>
-        )}
-        {secondaryLinks.length > 0 && (
-          <>
-            <span class="h-3.5 w-px bg-neutral-300 dark:bg-neutral-700" aria-hidden="true" />
-            {secondaryLinks.map((l) => (
-              <a
-                href={l.href}
-                target={isExternal(l.href) ? "_blank" : undefined}
-                rel={isExternal(l.href) ? "noopener noreferrer" : undefined}
-                class="text-sm font-medium text-neutral-900 hover:underline dark:text-neutral-100"
-              >
-                {l.label}
-              </a>
-            ))}
-          </>
         )}
       </div>
     ) : (
