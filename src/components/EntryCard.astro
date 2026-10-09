@@ -1,4 +1,9 @@
 ---
+interface SecondaryLink {
+  label: string;
+  href: string;
+}
+
 interface Props {
   name: string;
   dates: string;
@@ -7,22 +12,41 @@ interface Props {
   tags?: string[];
   link?: string;
   linkLabel?: string;
+  secondaryLinks?: SecondaryLink[];
   noLinkLabel?: string;
 }
 
-const { name, dates, outlet, bullets, tags, link, linkLabel = "View", noLinkLabel } = Astro.props;
-const Tag = link ? "a" : "div";
-const isExternal = link ? /^https?:\/\//.test(link) : false;
-const linkProps = link ? { href: link, ...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {}) } : {};
+const {
+  name,
+  dates,
+  outlet,
+  bullets,
+  tags,
+  link,
+  linkLabel = "View",
+  secondaryLinks = [],
+  noLinkLabel,
+} = Astro.props;
+
+const isExternal = (href: string) => /^https?:\/\//.test(href);
+// A whole card can only be a single <a> when there's exactly one destination —
+// extra secondary links would otherwise nest an <a> inside an <a>.
+const wholeCardClickable = Boolean(link) && secondaryLinks.length === 0;
+const Tag = wholeCardClickable ? "a" : "div";
+const linkProps = wholeCardClickable
+  ? { href: link, ...(isExternal(link!) ? { target: "_blank", rel: "noopener noreferrer" } : {}) }
+  : {};
 ---
 
 <Tag
   {...linkProps}
   class:list={[
     "group block rounded-lg border p-5 transition-colors",
-    link
+    wholeCardClickable
       ? "border-neutral-200 hover:border-neutral-400 hover:bg-neutral-50 dark:border-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-900"
-      : "border-dashed border-neutral-200 dark:border-neutral-800",
+      : link
+        ? "border-neutral-200 dark:border-neutral-800"
+        : "border-dashed border-neutral-200 dark:border-neutral-800",
   ]}
 >
   <div class="flex items-start justify-between gap-4">
@@ -47,7 +71,7 @@ const linkProps = link ? { href: link, ...(isExternal ? { target: "_blank", rel:
         )}
       </div>
     </div>
-    {link && (
+    {wholeCardClickable && (
       <span
         class="mt-1 shrink-0 text-neutral-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-neutral-900 dark:group-hover:text-neutral-100"
         aria-hidden="true"
@@ -65,9 +89,32 @@ const linkProps = link ? { href: link, ...(isExternal ? { target: "_blank", rel:
 
   {
     link ? (
-      <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-neutral-900 group-hover:underline dark:text-neutral-100">
-        {linkLabel} <span aria-hidden="true">→</span>
-      </span>
+      <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1">
+        {wholeCardClickable ? (
+          <span class="inline-flex items-center gap-1 text-sm font-medium text-neutral-900 group-hover:underline dark:text-neutral-100">
+            {linkLabel} <span aria-hidden="true">→</span>
+          </span>
+        ) : (
+          <a
+            href={link}
+            target={isExternal(link) ? "_blank" : undefined}
+            rel={isExternal(link) ? "noopener noreferrer" : undefined}
+            class="inline-flex items-center gap-1 text-sm font-medium text-neutral-900 hover:underline dark:text-neutral-100"
+          >
+            {linkLabel} <span aria-hidden="true">→</span>
+          </a>
+        )}
+        {secondaryLinks.map((l) => (
+          <a
+            href={l.href}
+            target={isExternal(l.href) ? "_blank" : undefined}
+            rel={isExternal(l.href) ? "noopener noreferrer" : undefined}
+            class="text-sm text-neutral-500 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+          >
+            {l.label}
+          </a>
+        ))}
+      </div>
     ) : (
       noLinkLabel && (
         <span class="mt-4 inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-1 text-xs text-neutral-500 dark:bg-neutral-900 dark:text-neutral-400">
