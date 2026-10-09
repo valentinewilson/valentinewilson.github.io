@@ -99,9 +99,9 @@ const linkProps = wholeCardClickable
             href={link}
             target={isExternal(link) ? "_blank" : undefined}
             rel={isExternal(link) ? "noopener noreferrer" : undefined}
-            class="inline-flex items-center gap-1 text-sm font-medium text-neutral-900 hover:underline dark:text-neutral-100"
+            class="text-sm font-medium text-neutral-900 hover:underline dark:text-neutral-100"
           >
-            {linkLabel} <span aria-hidden="true">→</span>
+            {linkLabel}
           </a>
         )}
         {secondaryLinks.map((l) => (
