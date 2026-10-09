@@ -4,35 +4,29 @@ import ProjectEntry from "../components/ProjectEntry.astro";
 
 const writingSamples = [
   {
-    name: "[Towards Data Science article title]",
-    dates: "[Month Year]",
-    teaser: "[One or two sentence description of the piece.]",
-    tags: ["Towards Data Science"],
-    siteLink: "#",
-    collapsible: false,
-  },
-  {
-    name: "[Medium article title]",
-    dates: "[Month Year]",
-    teaser: "[One or two sentence description of the piece.]",
-    tags: ["Medium"],
-    siteLink: "#",
-    collapsible: false,
-  },
-  {
     name: "[Policy memo title]",
     dates: "[Month Year]",
-    teaser: "[One or two sentence description of the memo.]",
-    tags: ["Policy Memo"],
-    siteLink: "#",
+    teaser:
+      "[Description emphasizing the governance/policy angle — e.g. structured analysis for a funder, agency, or institutional audience.] Available on request.",
+    tags: ["AI Governance", "Policy Memo"],
     collapsible: false,
   },
   {
-    name: "[Student newspaper article title]",
-    dates: "[Month Year]",
-    teaser: "[One or two sentence description of the piece.]",
-    tags: ["Student Newspaper"],
-    siteLink: "#",
+    name: "The Love Machine (Learning)",
+    dates: "July 2019",
+    teaser:
+      "A synthesis of social psychology research (Gottman's relationship studies) and comparable algorithmic-matching projects (Stanford Marriage Pact, Harvard Datamatch) framing the design of a genetic-algorithm compatibility model, followed by a statistical analysis of the resulting survey data — examining demographic bias in the sample and how algorithmic matching can override the propinquity effect that otherwise structures who we form relationships with.",
+    tags: ["Human-AI Interaction", "Algorithmic Decision-Making"],
+    siteLink: "https://medium.com/data-science/the-love-machine-learning-2cfa524a8c78",
+    collapsible: false,
+  },
+  {
+    name: "The Politics of Romance",
+    dates: "May 2020",
+    teaser:
+      "A self-critical data analysis of The Love Machine's matchmaking data, finding that political bias shaped student preferences far more than expected — and reflecting on how an algorithm meant to broaden students' options instead reinforced their existing filter bubbles.",
+    tags: ["Algorithmic Bias", "Human Autonomy"],
+    siteLink: "https://medium.com/swlh/the-politics-of-romance-fb41dbad5f19",
     collapsible: false,
   },
 ];
@@ -42,6 +36,9 @@ const writingSamples = [
   <h1 class="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
     Writing
   </h1>
+  <p class="mt-2 max-w-xl text-neutral-600 dark:text-neutral-400">
+    Research synthesis, policy analysis, and writing on AI, human behavior, and decision-making.
+  </p>
 
   <section class="mt-10">
     <div class="mt-4 space-y-4">
